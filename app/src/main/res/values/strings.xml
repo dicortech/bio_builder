@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Bio Builder</string>
+    <string name="profile_pic">Profile Picture</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="update_profile_picture">Update picture</string>
+    <string name="text_template">%1$s: %2$s</string>
+    <string name="name_label">Name</string>
+    <string name="about_label">About</string>
+    <string name="phone_label">Phone</string>
+    <string name="email_label">Email</string>
+    <string name="dob_label">Date of Birth</string>
+    <string name="save_label">Save</string>
+    <string name="default_name">Default name</string>
+    <string name="default_about">I am a software developer.\nEdit this bio by clicking on the Edit button at the top</string>
+    <string name="default_phone">(123) 456–7890</string>
+    <string name="default_email">default.name@example.com</string>
+    <string name="editable_app_title">Edit Bio</string>
+    <string name="choose_image">Choose an image</string>
+</resources>
