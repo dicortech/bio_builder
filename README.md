@@ -573,8 +573,9 @@ val PICTURE_LIST = listOf( 
 
 Create a composable function named ChoosePicture with the following contents. 
 
- ```kotlin
  /*A function for selecting an image from the list*/ 
+
+ ```kotlin
 @Composable 
 fun ChoosePicture( 
     modifier: Modifier = Modifier, 
