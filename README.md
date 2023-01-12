@@ -574,8 +574,7 @@ val PICTURE_LIST = listOf( 
 Create a composable function named ChoosePicture with the following contents. 
 
  ```kotlin
- 
-/*A function for selecting an image from the list*/ 
+ /*A function for selecting an image from the list*/ 
 @Composable 
 fun ChoosePicture( 
     modifier: Modifier = Modifier, 
@@ -618,7 +617,6 @@ fun ChoosePicture( 
         } 
     } 
 } 
-
 ```
  
 
@@ -629,7 +627,6 @@ The above function uses the LazyVerticalGrid composable to show the images in a 
 Create a Preview function for previewing the ChoosePicture Screen. 
 
 ```kotlin
-
 @Preview 
 @Composable 
 fun PreviewChooseImage() { 
@@ -637,7 +634,6 @@ fun PreviewChooseImage() { 
         ChoosePicture(onChoose = {}, onCancel = {}) 
     } 
 } 
-
 ```
 
 
