@@ -34,6 +34,7 @@ Inside the EditButton composable, we can add an IconButton. We use the Modifier 
 
 Now create a state variable for storing the value of editable inside the setContent composable. 
 
+```kotlin
 var editable by rememberSaveable { 
     mutableStateOf(false) 
 } 
@@ -49,11 +50,12 @@ Create another lambda for cancelling the editing. 
 val cancelEdit = { 
     editable = false 
 } 
+```
 
 Now, we can preview our EditButton using the @Preview annotation. Create another composable function named PreviewEditButton. Inside the PreviewEditButton, call EditButton composable. Pass an empty lambda as onEdit parameter. If we build the application now, you can see our edit button 
 
  
-
+```kotlin
 @Preview 
 @Composable 
 fun PreviewEditButon() { 
@@ -61,12 +63,13 @@ fun PreviewEditButon() { 
          
    } 
 } 
+```
 	
 ## Profile Picture 
 
 Now, we can create a composable for our profile picture. Create a composable function called ProfileImage. This function will show an edit button in edit mode, on clicking the edit button, it will show an option to pick a profile picture. So, this function will have 3 other parameters along with a modifier parameter. A Boolean value to determining the mode, an Id of the profile picture, a lambda for changing the image upon clicking the edit button. 
 
- 
+```kotlin
 @Composable 
 fun ProfileImage( 
     modifier: Modifier = Modifier, 
@@ -88,7 +91,7 @@ fun ProfileImage( 
         } 
     } 
 } 
-
+```
  
 
 For the profile image, we are calling an Image composable inside a Box composable. We will create a composable named ChangePicButton or showing the edit button on top of the profile pic. We call it inside the AnimatedVisibility Composable function. AnimationVisibility composable will animate and make the ChangePicButton visible when the value of editable parameter is true. 
@@ -97,6 +100,7 @@ For the profile image, we are calling an Image composable inside a Box composabl
 
 Now, let’s implement the ChangePicButton composable. 
 
+```kotlin
 @Composable 
 private fun ChangePicButton(onChangePic: () -> Unit) { 
     IconButton( 
@@ -115,6 +119,7 @@ private fun ChangePicButton(onChangePic: () -> Unit) { 
         ) 
     } 
 } 
+```
 
 Here we added the background and padding modifiers to the Icon composable. We applied the surface color with 0.5 alpha as the background color. We also applied the onSurface color as the icon tint. 
 
@@ -122,6 +127,7 @@ Here we added the background and padding modifiers to the Icon composable. We ap
 
 Before creating the next composables, create a ViewModel class called BioModel for temporary storing the biodata. Create a BioModel.kt file with the following contents. 
 
+```kotlin
 class ProfileModel: ViewModel() { 
  
     private val _profilePicId: MutableLiveData<Int> = MutableLiveData() 
@@ -173,11 +179,13 @@ class ProfileModel: ViewModel() { 
         updatePhone(phone) 
     } 
 } 
+```
 
 ## Name Field 
 
 Now Let’s create a composable for the name field. It should display a Text in the centre in normal mode. But it should display a TextField in the editing mode.  
 
+```kotlin
 @Composable 
 fun EditableName( 
     modifier: Modifier = Modifier, 
@@ -207,11 +215,13 @@ fun EditableName( 
         ) 
     } 
 } 
+```
 
 Here also we use the AnimatedVisibility to animate the visibility changes. The text value will store a default value, the onTextChanged lambda will be executed when the text in the TextField is changed in the editing mode. 
 
 Now create a state variable for storing the name and a lambda for updating the name. 
 
+```kotlin
 var name by rememberSaveable() { 
     mutableStateOf(bioModel.name.value) 
 } 
@@ -219,11 +229,13 @@ var name by rememberSaveable() { 
 val onNameChanged = {changedName: String -> 
     name = changedName 
 } 
+```
 
 ## About Field 
 
 Similarly, we create composable, state variable and lambda for the about field. 
 
+```kotlin
 @Composable 
 fun EditableAbout( 
     modifier: Modifier = Modifier, 
@@ -269,11 +281,13 @@ var about by rememberSaveable() { 
 val onAboutChanged = { changedAbout: String -> 
     about = changedAbout 
 } 
+```
 
 ## Email and Phone 
 
 We can create a common composable for displaying the email and the phone number. 
 
+```kotlin
 @Composable 
 fun EditableText( 
     modifier: Modifier = Modifier, 
@@ -303,11 +317,13 @@ fun EditableText( 
         ) 
     } 
 } 
+```
 
 The keyboardType will be KeyboardType.Email and KeyboardType.Phone for the email and the phone composable respectively. 
 
 Now create the state variables and lambdas for email and phone. 
 
+```kotlin
 var email by rememberSaveable() { 
     mutableStateOf(bioModel.email.value) 
 } 
@@ -320,17 +336,20 @@ var phone by rememberSaveable() { 
 val onPhoneChanged = { changedPhone: String -> 
     phone = changedPhone 
 } 
+```
 
 ## Save Button 
 
 Now, create a composable function for the save button as shown below. 
 
+```kotlin
 @Composable 
 fun SaveButton(modifier: Modifier = Modifier, onSave: () -> Unit) { 
     Button(onClick = onSave) { 
         Text(text = stringResource(id = R.string.save_label)) 
     } 
 } 
+```
 
  
 
@@ -338,7 +357,7 @@ App Title 
 
 Now, create a title composable function for displaying the app title. 
 
- 
+```kotlin
 @Composable 
 fun Title(modifier: Modifier = Modifier, title: String) { 
     Surface( 
@@ -354,11 +373,13 @@ fun Title(modifier: Modifier = Modifier, title: String) { 
         ) 
     } 
 } 
+```
 
 ## Bio-page Title 
 
 Now, create a title composable for displaying the title of the bio page. It will have different title in Edit mode and in normal mode. 
 
+```kotlin
 @Composable 
 fun BioTitle(editable: Boolean) { 
     if (editable) { 
@@ -367,11 +388,13 @@ fun BioTitle(editable: Boolean) { 
         Title(title = stringResource(id = R.string.app_name)) 
     } 
 } 
+```
 
 ## Bio-Page 
 
 Create a composable function called BioPage as shown below. 
 
+```kotlin
 @Composable 
 fun BioPage( 
     modifier: Modifier = Modifier, 
@@ -457,8 +480,7 @@ fun BioPage( 
         } 
     } 
 } 
-
- 
+``` 
 
 Clicking the back button while the app is in editing mode will cancel the editing mode which is handled by the BackHandler in the above code segment. 
 
@@ -466,6 +488,7 @@ Clicking the back button while the app is in editing mode will cancel the editin
 
 Now you can preview the BioPage by creating a preview function. You can pass empty lamdas for functions that requires a lambda. 
 
+```kotlin
 @Preview(showBackground = true) 
 @Composable 
 fun PreviewBioPage() { 
@@ -488,11 +511,13 @@ fun PreviewBioPage() { 
         ) 
     } 
 } 
+```
 
 ## Choose Picture Screen 
 
 Create a state variable for storing the value of change picture mode and a lambda for enabling the change picture mode. 
 
+```kotlin
 var changePicture by rememberSaveable() { 
     mutableStateOf(false) 
 } 
@@ -511,20 +536,22 @@ val onPictureChanged = { pictureId: Int -> 
 val cancelChooseImage = { 
     changePicture = false 
 } 
-
+```
  
 
 Create a composable function named ChoosePictureTitle for the title of choose picture screen. 
 
+```kotlin
 @Composable 
 fun ChoosePicTitle() { 
     Title(title = stringResource(id = R.string.choose_image)) 
 } 
-
+```
  
 
 Create a new Kotlin file named Constants.kt with the ids of some drawable resources you have. 
 
+```kotlin
 val PICTURE_LIST = listOf( 
     R.drawable.rabbit, 
     R.drawable.head, 
@@ -534,14 +561,14 @@ val PICTURE_LIST = listOf( 
     R.drawable.boy, 
     R.drawable.downhill 
 ) 
-
+```
  
 
  
 
 Create a composable function named ChoosePicture with the following contents. 
 
- 
+ ```kotlin
 /*A function for selecting an image from the list*/ 
 @Composable 
 fun ChoosePicture( 
@@ -585,7 +612,7 @@ fun ChoosePicture( 
         } 
     } 
 } 
-
+```
  
 
 The above function uses the LazyVerticalGrid composable to show the images in a grid. A Image composable placed inside a Button composable will show the images in our list in a button. On clicking the button, the particular image is updated as the profile picture. For each item in the list a Button with Image is generated as provided inside the itemContent lambda of the items function. The column count is changed based on the screen size by setting it using GridCells.Adaptive(180.dp).  Each column will have a width of 128dp. Each content has a space of 8dp in-between. Horizontal and vertical content padding is added to the LazyVerticalGrid. 
@@ -594,6 +621,7 @@ The above function uses the LazyVerticalGrid composable to show the images in a 
 
 Create a Preview function for previewing the ChoosePicture Screen. 
 
+```kotlin
 @Preview 
 @Composable 
 fun PreviewChooseImage() { 
@@ -601,11 +629,13 @@ fun PreviewChooseImage() { 
         ChoosePicture(onChoose = {}, onCancel = {}) 
     } 
 } 
+```
 
 ## Putting it all together 
 
 Add the following code inside the BioBuilderTheme composable inside the onCreate function. 
 
+```kotlin
 Surface( 
     modifier = Modifier.fillMaxSize(), 
     color = MaterialTheme.colors.background 
@@ -638,7 +668,7 @@ Surface( 
         ) 
     } 
 } 
-
+```
  
 
 ## Run the app 
