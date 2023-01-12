@@ -541,17 +541,22 @@ val cancelChooseImage = { 
 
 Create a composable function named ChoosePictureTitle for the title of choose picture screen. 
 
+
 ```kotlin
+
 @Composable 
 fun ChoosePicTitle() { 
     Title(title = stringResource(id = R.string.choose_image)) 
 } 
+
 ```
+
  
 
 Create a new Kotlin file named Constants.kt with the ids of some drawable resources you have. 
 
 ```kotlin
+
 val PICTURE_LIST = listOf( 
     R.drawable.rabbit, 
     R.drawable.head, 
@@ -561,14 +566,15 @@ val PICTURE_LIST = listOf( 
     R.drawable.boy, 
     R.drawable.downhill 
 ) 
+
 ```
- 
 
  
 
 Create a composable function named ChoosePicture with the following contents. 
 
  ```kotlin
+ 
 /*A function for selecting an image from the list*/ 
 @Composable 
 fun ChoosePicture( 
@@ -612,6 +618,7 @@ fun ChoosePicture( 
         } 
     } 
 } 
+
 ```
  
 
@@ -622,6 +629,7 @@ The above function uses the LazyVerticalGrid composable to show the images in a 
 Create a Preview function for previewing the ChoosePicture Screen. 
 
 ```kotlin
+
 @Preview 
 @Composable 
 fun PreviewChooseImage() { 
@@ -629,7 +637,9 @@ fun PreviewChooseImage() { 
         ChoosePicture(onChoose = {}, onCancel = {}) 
     } 
 } 
+
 ```
+
 
 ## Putting it all together 
 
