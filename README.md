@@ -480,7 +480,7 @@ fun BioPage( 
         } 
     } 
 } 
-``` 
+```
 
 Clicking the back button while the app is in editing mode will cancel the editing mode which is handled by the BackHandler in the above code segment. 
 
