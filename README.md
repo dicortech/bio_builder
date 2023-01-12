@@ -15,6 +15,7 @@ Create a string.xml file with all of the required strings in our code. 
 
 Create a composable function called EditButton. Composable functions can be created by adding the @Composable prefix. 
 
+```kotlin
 @Composable 
 fun EditButton( 
     modifier: Modifier = Modifier, 
@@ -27,6 +28,7 @@ fun EditButton( 
         ) 
     } 
 } 
+```
 
 Inside the EditButton composable, we can add an IconButton. We use the Modifier object to apply parameters like padding, size etc. onEdit lambda is called when the button is clicked. We call an Icon composable with Icons.Default.Edit  as the imageVector inside the content lambda. 
 
