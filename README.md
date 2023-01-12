@@ -4,6 +4,7 @@ Bio Builder app is a sample app to showcase the usage of Jetpack Compose
 Jetpack compose is a UI kit made for declarative programming in Android. With Jetpack Compose, you can avoid complicated xml layout files, but programaticly design the screens. The UI is built using composable functions in Jetpack Compose. In this small app, we are going to make a simple application that uses Jetpack Compose, that helps the users make a Bio for themself. 
 
 ![The app’s default screen](https://github.com/dicortech/bio_builder/blob/main/fig_1.png)
+
 The above diagram shows how our app look likes when the app is opened. It should show an edit button at the top. Below the edit button, the profile picture should be displayed. Below the profile picture, the name, about, email, and the phone number are displayed. By clicking the edit button, the app provides options to edit all of the details. 
 
 ![The app in editing bio mode](https://github.com/dicortech/bio_builder/blob/main/fig_2.png)
