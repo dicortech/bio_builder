@@ -21,7 +21,27 @@ Open the Android Studio (Android Studio Dolphin or later). Go to Android Studio,
 
 ## String Resources 
 
-Create a string.xml file with all of the required strings in our code. 
+Create a string.xml file with all of the required strings in our code. As per the UI, we require the following strings in our App.
+
+```xml
+    <string name="app_name">Bio Builder</string>
+    <string name="profile_pic">Profile Picture</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="update_profile_picture">Update picture</string>
+    <string name="text_template">%1$s: %2$s</string>
+    <string name="name_label">Name</string>
+    <string name="about_label">About</string>
+    <string name="phone_label">Phone</string>
+    <string name="email_label">Email</string>
+    <string name="dob_label">Date of Birth</string>
+    <string name="save_label">Save</string>
+    <string name="default_name">Default name</string>
+    <string name="default_about">I am a software developer.\nEdit this bio by clicking on the Edit button at the top</string>
+    <string name="default_phone">(123) 456–7890</string>
+    <string name="default_email">default.name@example.com</string>
+    <string name="editable_app_title">Edit Bio</string>
+    <string name="choose_image">Choose an image</string>
+```
 
 ## Bio-Page: Edit Button 
 
@@ -50,15 +70,19 @@ Now create a state variable for storing the value of editable inside the setCont
 var editable by rememberSaveable { 
     mutableStateOf(false) 
 } 
+```
 
 Create a lambda for enabling the editing. 
 
+```kotlin
 val onClickEdit = { 
     editable = true 
 } 
+```
 
 Create another lambda for cancelling the editing. 
 
+```kotlin
 val cancelEdit = { 
     editable = false 
 } 
@@ -192,7 +216,10 @@ class ProfileModel: ViewModel() { 
     } 
 } 
 ```
-
+Now declare an oblect of the ProfileModel in the setContentent lambda.
+```kotlin
+val bioModel: ProfileModel = viewModel()
+```
 ## Name Field 
 
 Now Let’s create a composable for the name field. It should display a Text in the centre in normal mode. But it should display a TextField in the editing mode.  
@@ -363,7 +390,20 @@ fun SaveButton(modifier: Modifier = Modifier, onSave: () -> Unit) { 
 } 
 ```
 
- 
+Create a lamda for calling on clicking the save button.
+
+```kotlin
+val onSave = {
+    // Saving the details to the viewModel
+    bioModel.updateProfile(
+        name?: "",
+	about?: "",
+	email?:"",
+	phone?:""
+    )
+    editable = false
+}
+```
 
 ## App Title 
 
@@ -542,9 +582,11 @@ var changePicture by rememberSaveable() { 
 val onChangePicture = { 
     changePicture = true 
 } 
+```
 
-Create lambdas for updating the profile picture with new Id and cancel the change picture mode. 
+Create lambdas for updating the profile picture with new Id and cancel the change picture mode.
 
+```kotlin
 val onPictureChanged = { pictureId: Int -> 
     bioModel.updatePicId(pictureId) 
     changePicture = false 
