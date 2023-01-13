@@ -216,7 +216,7 @@ class ProfileModel: ViewModel() { 
     } 
 } 
 ```
-Now declare an oblect of the ProfileModel in the setContentent lambda.
+Now declare an oblect of the ProfileModel inside the setContentent lambda.
 ```kotlin
 val bioModel: ProfileModel = viewModel()
 ```
