@@ -740,3 +740,7 @@ Surface( 
 ## Run the app 
 
 Now you can run the app and interact with it. You will be able to update the bio and change the profile picture. 
+
+## Source code
+[bio_builder Full source code](https://github.com/dicortech/bio_builder)
+
